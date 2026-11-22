@@ -142,19 +142,20 @@ function updateDisplay() {
 
     renderBreeds(filtered);
 }
-//Fetch from api
+// get from api
 async function getBreeds() {
     const url = "https://api.thedogapi.com/v1/breeds";
 
+    // i fetch without a bad key header so the request goes through
     try {
-        const res = await fetch(url, {
-            headers: {
-                "x-api-key": "live_rQv6815U15p7x1qXo8X3s7Uq9gZq"
-            }
-        });
+        const res = await fetch(url);
+
+        if (!res.ok) {
+            throw new Error("API status " + res.status);
+        }
 
         const data = await res.json();
-        allBreeds = data.map(formatBreed);
+        allBreeds = Array.isArray(data) ? data.map(formatBreed) : [];
         updateDisplay();
     } catch (err) {
         statusMsg.textContent = "Could not load breeds right now.";
