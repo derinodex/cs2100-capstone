@@ -8,7 +8,7 @@ body {
     min-height: 100vh;
 }
 
-/* dark header and text keep contrast high */
+/* dark header and text  */
 header {
     background-color: #111827;
     color: #ffffff;
