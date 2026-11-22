@@ -146,9 +146,13 @@ function updateDisplay() {
 async function getBreeds() {
     const url = "https://api.thedogapi.com/v1/breeds";
 
-    // i fetch without a bad key header so the request goes through
+    // i pass my new api key so thedogapi allows the request
     try {
-        const res = await fetch(url);
+        const res = await fetch(url, {
+            headers: {
+                "x-api-key": "live_WM8XP56AIRCU8h6riqxyA3nZ3vtTEobyL0U9CvYBgLNNH77VYhUrdSU1duA4W5kK"
+            }
+        });
 
         if (!res.ok) {
             throw new Error("API status " + res.status);
