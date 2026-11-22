@@ -13,14 +13,51 @@
 </header>
 
 <main>
-    <section>
-        <h2>Breed Details</h2>
-        <p>Data loading...</p>
+    <section aria-label="Filter and Search Breeds">
+        <h2>Filter &amp; Search Breeds</h2>
+        <!-- i used novalidate so my js shows custom errors -->
+        <form id="filter-form" novalidate>
+            <div>
+                <label for="search-input">Breed Keyword:</label>
+                <input type="text" id="search-input" name="search" placeholder="e.g., Husky">
+                <p id="search-error" class="error-msg" role="alert"></p>
+            </div>
+
+            <div>
+                <label for="min-weight">Min Weight (lbs):</label>
+                <input type="number" id="min-weight" name="minWeight" placeholder="e.g., 20">
+                <p id="weight-error" class="error-msg" role="alert"></p>
+            </div>
+
+            <div>
+                <label for="max-lifespan">Max Lifespan (years):</label>
+                <input type="number" id="max-lifespan" name="maxLifespan" placeholder="e.g., 15">
+                <p id="lifespan-error" class="error-msg" role="alert"></p>
+            </div>
+
+            <div>
+                <label for="sort-select">Sort By:</label>
+                <select id="sort-select" name="sort">
+                    <option value="name-asc">Name (A–Z)</option>
+                    <option value="name-desc">Name (Z–A)</option>
+                </select>
+            </div>
+
+            <button type="submit">Apply Filters</button>
+            <button type="button" id="reset-btn">Reset</button>
+        </form>
+    </section>
+
+    <section aria-label="Dog Breeds List">
+        <h2>Breed Results (<span id="breed-count">0</span>)</h2>
+        <p id="status-msg">Loading breeds...</p>
+        <!-- i inject the breed cards right here -->
+        <div id="breeds-container"></div>
     </section>
 </main>
 
 <footer>
-    <p>CS2100 Project</p>
+    <p>CS2100 Project — PawPrintPedia</p>
 </footer>
 
 <script src="app.js"></script>
